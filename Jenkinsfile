@@ -38,10 +38,10 @@ pipeline {
             steps {
                 unstash 'source'
                 sh '''
-                    sed -i "s#purushothdoc/webapp:latest#$FULL_IMAGE#g" deployment.yaml
+                    sed -i "s#purushothdoc/webapp:latest#$FULL_IMAGE#g" Deployment.yaml
 
-                    kubectl apply -f deployment.yaml
-                    kubectl apply -f service.yaml
+                    kubectl apply -f Deployment.yaml
+                    kubectl apply -f Service.yaml
 
                     kubectl rollout status deployment/webapp-deployment --timeout=120s
                 '''
